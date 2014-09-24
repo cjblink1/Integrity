@@ -7,7 +7,8 @@ public class Main {
 		
 		
 		ArgParser ap = new ArgParser(args);
-		ap.printArguments();
+		ap.getOptionsFromArgs();
+		ap.printSplitArgs();
 		
 //		for (String s: args)
 //		{
