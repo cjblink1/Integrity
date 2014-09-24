@@ -8,15 +8,18 @@ import com.mks.api.OptionList;
 /**
  * 
  * ArgParser parses the arguments from the command line and creates meaningful Option Objects
- * for executing in the command line
+ * for executing in the Integrity API
  * @author mk347, Connor Boyle
  * @version 9-24-2014
  */
 public class ArgParser {
 	
 	
+	@SuppressWarnings("unused")
 	private static final String SWITCH_LABEL = "--label";
+	@SuppressWarnings("unused")
 	private static final String SWITCH_PROJECT = "--project";
+	@SuppressWarnings("unused")
 	private static final String SWITCH_PATH = "--path";
 	
 	private ArrayList<String> args;

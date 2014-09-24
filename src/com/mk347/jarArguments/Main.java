@@ -5,13 +5,17 @@ public class Main {
 	public static void main(String[] args)
 	{
 		
-		for (String s: args)
-		{
-			
-			System.out.println(s);
-		}
 		
-		System.out.println("DONE");
+		ArgParser ap = new ArgParser(args);
+		ap.printArguments();
+		
+//		for (String s: args)
+//		{
+//			
+//			System.out.println(s);
+//		}
+//		
+//		System.out.println("DONE");
 	}
 
 }
