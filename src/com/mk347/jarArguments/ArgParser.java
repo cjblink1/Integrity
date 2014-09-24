@@ -16,11 +16,8 @@ import com.mks.api.OptionList;
 public class ArgParser {
 	
 	
-	@SuppressWarnings("unused")
 	private static final String SWITCH_LABEL = "--label";
-	@SuppressWarnings("unused")
 	private static final String SWITCH_PROJECT = "--project";
-	@SuppressWarnings("unused")
 	private static final String SWITCH_PATH = "--path";
 	
 	private ArrayList<String> args;
@@ -49,12 +46,31 @@ public class ArgParser {
 		
 	}
 	
-	public boolean hasValidOptions()
+	public ArrayList<String[]> makeValidOptions(ArrayList<String[]> splitArgs) throws Exception
 	{
-		
-		return false;
+		for(int i = 0; i < splitArgs.size(); i++)
+		{
+			if(!isValidKey(splitArgs.get(i)[0]))
+			{
+				throw new Exception("Invalid key/value pair! " +
+						"Did you enter your arguments correctly?");
+			}
+			
+			if(splitArgs.get(i)[0] == "label")
+			{
+				splitArgs.get(i)[0] = "scope";
+				splitArgs.get(i)[1] = "anyrevlabellike:"+splitArgs.get(i)[1];
+			}
+		}
+		return splitArgs;
 	}
 	
+
+	private boolean isValidKey(String string) {
+		if(string == SWITCH_LABEL || string == SWITCH_PROJECT || string == SWITCH_PATH) return true;
+		else return false;
+	}
+
 	public OptionList getOptionsFromArgs()
 	{
 		ArrayList<String[]> argPairs = splitListIntoArgs();
