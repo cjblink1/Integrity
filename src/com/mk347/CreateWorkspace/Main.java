@@ -33,10 +33,10 @@ public class Main {
 		
 		
 		//Execute creation command
-		Response r = man.execute(cmd);
+		man.execute(cmd);
 		
 		//Print out sandbox ID/directory
-		System.out.println(r.getResult().getPrimaryValue().getId());
+		System.exit(0);
 		man.close();
 		
 		}catch(Exception e){}

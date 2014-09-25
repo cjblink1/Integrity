@@ -148,7 +148,7 @@ public class ArgParser {
 			e.printStackTrace();
 		}
 		// TODO Print splitArgs for debugging purposes - Should be erased
-		printSplitArgs(argPairs);
+		//printSplitArgs(argPairs);
 		
 		//Return coveted prize - the OptionList!!!
 		return createOptionList(argPairs);
