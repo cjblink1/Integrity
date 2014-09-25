@@ -24,6 +24,9 @@ public class ArgParser {
 	private ArrayList<String> args;
 	private ArrayList<String[]> splitArgs;
 	
+	//String path to store the path to the sandbox
+	public String path;
+	
 	/**
 	 * Constructs an ArgParser object
 	 * @param args - list of arguments from the command line
@@ -106,6 +109,13 @@ public class ArgParser {
 				splitArgs.get(i)[0] = "scope";
 				splitArgs.get(i)[1] = "anyrevlabellike:"+splitArgs.get(i)[1];
 			}
+			
+			//If the argument is path...
+			if(splitArgs.get(i)[0].equals(SWITCH_PATH))
+			{	
+				//Assign path to instance variable so that it can be returned to the main program 
+				path = splitArgs.get(i)[1];
+			}
 		}
 		return splitArgs;
 	}
@@ -157,10 +167,14 @@ public class ArgParser {
 		//Loop through array of splitArgs
 		for(int i = 0; i < argPairs.size(); i++)
 		{
-			//Create new Integrity Option with arg pair at index "i"
-			Option o = new Option(argPairs.get(i)[0], argPairs.get(i)[1]);
-			//Add Integrity Option to Integrity OptionList
-			ol.add(o);
+			//If the key/value pair is not the path...
+			if(!argPairs.get(i)[0].equals(SWITCH_PATH))
+			{
+				//Create new Integrity Option with arg pair at index "i"
+				Option o = new Option(argPairs.get(i)[0], argPairs.get(i)[1]);
+				//Add Integrity Option to Integrity OptionList
+				ol.add(o);
+			}
 		}
 		//Return the coveted prize - the OptionList!!!
 		return ol;
@@ -188,5 +202,15 @@ public class ArgParser {
 		}
 		//Return the ArrayList of splitArgs
 		return splitArgs;
+	}
+	
+	/**
+	 * Returns the value of path
+	 * 
+	 * @return - path
+	 */
+	public String getPath()
+	{
+		return path;
 	}
 }
