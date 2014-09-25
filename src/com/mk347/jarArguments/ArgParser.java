@@ -145,6 +145,7 @@ public class ArgParser {
 			//Ensure that the splitArgs will make valid Options
 			argPairs = ensureValidOptions(argPairs);
 		} catch (Exception e) {
+			System.exit(1);
 			e.printStackTrace();
 		}
 		// TODO Print splitArgs for debugging purposes - Should be erased

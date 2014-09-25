@@ -5,7 +5,6 @@ import com.mk347.jarArguments.ArgParser;
 import com.mks.api.Command;
 import com.mks.api.Option;
 import com.mks.api.OptionList;
-import com.mks.api.response.Response;
 
 public class Main {
 	
@@ -39,7 +38,10 @@ public class Main {
 		System.exit(0);
 		man.close();
 		
-		}catch(Exception e){}
+		}catch(Exception e){
+			
+			System.exit(2);
+		}
 	
 	}
 
