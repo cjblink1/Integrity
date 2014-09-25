@@ -34,9 +34,12 @@ public class Main {
 		//Execute creation command
 		man.execute(cmd);
 		
-		//Print out sandbox ID/directory
-		System.exit(0);
+
+		//Close the Connection
 		man.close();
+		
+		System.exit(0);
+
 		
 		}catch(Exception e){
 			
