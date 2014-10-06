@@ -1,4 +1,4 @@
-package com.mk347.CreateWorkspace;
+package com.mk347.CreateSandbox;
 
 
 import com.mk347.jarArguments.ArgParser;

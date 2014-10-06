@@ -1,4 +1,4 @@
-package com.mk347.CreateWorkspace;
+package com.mk347.CreateSandbox;
 
 	import java.io.IOException;
 	import java.util.Iterator;
