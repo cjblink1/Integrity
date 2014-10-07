@@ -34,6 +34,9 @@ package com.mk347.CreateSandbox;
 		
 		/**
 		 * Connects to the Integration Point and creates Session and CmdRunner
+		 * 
+		 * Called by Main.main()
+		 * 
 		 * @param hostname - hostname for integrity server
 		 * @param port - port of integrity server
 		 * @param username - username used to connect to server
@@ -42,10 +45,12 @@ package com.mk347.CreateSandbox;
 		 */
 		public boolean connect(String hostname, int port)
 		{
+			
+			//Should be changed to "server user" or "api" account
 			this.username = "mk347";
 			this.password = "Pbandj14";
 			
-			
+			//The following creates the integration point, session, and command runner
 			try {
 				boolean useClientIP = true;
 	                        if (useClientIP) {
@@ -63,6 +68,7 @@ package com.mk347.CreateSandbox;
 	                            session = IntegrationPointFactory.getInstance().createIntegrationPoint(hostname, port, 4, 12).createSession(username, password);
 	                            session.setAutoReconnect(true);
 	                        }
+	                        //Command runner
 	                        cr = session.createCmdRunner();
 	                                  
 	                        
@@ -71,15 +77,19 @@ package com.mk347.CreateSandbox;
 				System.out.println("Error occurred during initialization: "
 						+ apie.getMessage());
 				apie.printStackTrace();
+				//System.exit() is called by Main.main() if exception is thrown				
 				return false;
 			}
 			
 			return true;
 		}
 		/**
-		 * Executes the command and returns the response object
+		 * Executes the passed-in command and returns the response object
+		 * 
+		 * Called by Main.main()
+		 * 
 		 * @param cmd - command object to be executed
-		 * @return - Response to be parsed
+		 * @return - Response to be parsed by this.printResponse()
 		 */
 		public Response execute(Command cmd)
 		{
@@ -96,6 +106,9 @@ package com.mk347.CreateSandbox;
 
 		/**
 		 * Prints the Response work items to the console
+		 * 
+		 * Called by Main.main()
+		 * 
 		 * @param response - from the executed command
 		 */
 		public void printResponse(Response response)
@@ -127,6 +140,8 @@ package com.mk347.CreateSandbox;
 		
 		/**
 		 * Closes the server connection
+		 * 
+		 * Called by Main.main()
 		 */
 		public void close()
 		{
@@ -139,7 +154,4 @@ package com.mk347.CreateSandbox;
 				e.printStackTrace();
 			}
 		}
-
 	}
-
-
