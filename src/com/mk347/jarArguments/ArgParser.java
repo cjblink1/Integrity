@@ -9,7 +9,7 @@ import com.mks.api.OptionList;
 /**
  * 
  * ArgParser parses the arguments from the command line and creates meaningful Option Objects
- * for adding to Command object in Main.java prior to command execution
+ * for adding to Command object in Main.main() prior to command execution
  * @author mk347, Connor Boyle
  * @version 10-7-2014
  */
