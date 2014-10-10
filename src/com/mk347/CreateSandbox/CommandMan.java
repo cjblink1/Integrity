@@ -48,7 +48,7 @@ package com.mk347.CreateSandbox;
 			
 			//Should be changed to "server user" or "api" account
 			this.username = "mk347";
-			this.password = "Pbandj14";
+			this.password = "password";
 			
 			//The following creates the integration point, session, and command runner
 			try {
