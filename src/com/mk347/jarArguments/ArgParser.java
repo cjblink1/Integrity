@@ -19,6 +19,7 @@ public class ArgParser {
 	private static final String SWITCH_LABEL = "label";
 	private static final String SWITCH_PROJECT = "project";
 	private static final String SWITCH_PATH = "path";
+	private static final String SWITCH_MEMBER = "member";
 	
 	//Arraylists to store Arguments and split-Arguments
 	private ArrayList<String> args;
@@ -26,6 +27,11 @@ public class ArgParser {
 	
 	//String path to store the sandbox's path
 	public String path;
+	
+	//Used in case of addLabel
+	public String label;
+	public String member;
+	public String project;
 	
 	/**
 	 * Constructs an ArgParser object
@@ -117,7 +123,7 @@ public class ArgParser {
 				//System.exit() is called in this.getOptionsFromArgs()
 			}
 			
-			//If key is label
+			//If key is label...
 			if(splitArgs.get(i)[0].equals(SWITCH_LABEL))
 			{
 				//change to scope and anyrevlabellike: 
@@ -126,12 +132,24 @@ public class ArgParser {
 				splitArgs.get(i)[1] = "anyrevlabellike:"+splitArgs.get(i)[1];
 			}
 			
-			//If the argument is path...
+			//If key is path...
 			if(splitArgs.get(i)[0].equals(SWITCH_PATH))
 			{	
 				//Assign path to instance variable so that it can be returned to the main program 
 				//(Because path is a selection not an Option object)
 				path = splitArgs.get(i)[1];
+			}
+			
+			//If key is member...
+			if(splitArgs.get(i)[0].equals(SWITCH_MEMBER))
+			{
+				member = splitArgs.get(i)[1];
+			}
+			
+			//If key is project...
+			if(splitArgs.get(i)[0].equals(SWITCH_PROJECT))
+			{
+				project = splitArgs.get(i)[1];
 			}
 		}
 		return splitArgs;
@@ -148,7 +166,7 @@ public class ArgParser {
 	 */
 	private boolean isValidKey(String string) {
 		//Better way to write this logic
-		if(string.equals(SWITCH_LABEL) || string.equals(SWITCH_PROJECT)|| string.equals(SWITCH_PATH)) return true;
+		if(string.equals(SWITCH_LABEL) || string.equals(SWITCH_PROJECT)|| string.equals(SWITCH_PATH) || string.equals(SWITCH_MEMBER)) return true;
 		else return false;
 	}
 	
@@ -171,7 +189,7 @@ public class ArgParser {
 			argPairs = ensureValidOptions(argPairs);
 		} catch (Exception e) {
 			//If the splitArgs don't make valid objects...
-			System.exit(1); // Exit code 1 = syntax error
+			System.out.println("Error: "+ 1); // Exit code 1 = syntax error
 			e.printStackTrace();
 		}
 		
